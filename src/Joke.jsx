@@ -21,6 +21,18 @@ export default function Joke() {
     );
   }
 
+  const {
+    data: users,
+    isLoadingUsers,
+    isSuccessUsers,
+  } = useQuery('users', fetchUsers);
+
+  function fetchUsers(){
+    return fetch('http://pluto.test/api/users').then(response =>
+      response.json()
+    );
+  }
+
   return (
     <div>
       <h2>Joke API</h2>
